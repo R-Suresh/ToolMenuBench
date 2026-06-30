@@ -1,0 +1,48 @@
+\begin{tabular}{llrrrr}
+\toprule
+model & method & success & wrong & tools_per_step & tokens \\
+\midrule
+openai.gpt-oss-120b-1:0 & all_tools & 0.311 & 3.367 & 125.000 & 55228.156 \\
+openai.gpt-oss-120b-1:0 & cmtf & 0.956 & 0.033 & 0.956 & 1631.556 \\
+openai.gpt-oss-120b-1:0 & full_causal_path & 0.200 & 3.978 & 24.857 & 13593.256 \\
+openai.gpt-oss-120b-1:0 & keyword_top_10 & 0.322 & 1.133 & 6.778 & 4102.244 \\
+openai.gpt-oss-120b-1:0 & keyword_top_5 & 0.289 & 1.144 & 3.611 & 2847.422 \\
+openai.gpt-oss-120b-1:0 & state_aware & 0.189 & 3.900 & 23.186 & 12701.122 \\
+us.amazon.nova-2-lite-v1:0 & all_tools & 0.011 & 3.656 & 125.000 & 61096.644 \\
+us.amazon.nova-2-lite-v1:0 & cmtf & 1.000 & 0.000 & 1.000 & 858.278 \\
+us.amazon.nova-2-lite-v1:0 & full_causal_path & 0.000 & 3.878 & 29.057 & 15042.011 \\
+us.amazon.nova-2-lite-v1:0 & keyword_top_10 & 0.200 & 2.333 & 10.000 & 5171.522 \\
+us.amazon.nova-2-lite-v1:0 & keyword_top_5 & 0.200 & 2.067 & 5.000 & 3071.667 \\
+us.amazon.nova-2-lite-v1:0 & state_aware & 0.000 & 3.867 & 29.076 & 15050.344 \\
+us.amazon.nova-2-pro-preview-20251202-v1:0 & all_tools & 0.100 & 4.156 & 125.000 & 60588.133 \\
+us.amazon.nova-2-pro-preview-20251202-v1:0 & cmtf & 0.678 & 1.367 & 1.000 & 1176.956 \\
+us.amazon.nova-2-pro-preview-20251202-v1:0 & full_causal_path & 0.067 & 4.200 & 26.133 & 13298.589 \\
+us.amazon.nova-2-pro-preview-20251202-v1:0 & keyword_top_10 & 0.000 & 3.867 & 10.000 & 5309.200 \\
+us.amazon.nova-2-pro-preview-20251202-v1:0 & keyword_top_5 & 0.022 & 3.533 & 5.000 & 3208.856 \\
+us.amazon.nova-2-pro-preview-20251202-v1:0 & state_aware & 0.078 & 4.156 & 26.124 & 13282.511 \\
+us.amazon.nova-premier-v1:0 & all_tools & 0.244 & 2.444 & 125.000 & 53789.511 \\
+us.amazon.nova-premier-v1:0 & cmtf & 0.744 & 1.067 & 1.000 & 1099.078 \\
+us.amazon.nova-premier-v1:0 & full_causal_path & 0.056 & 4.367 & 24.801 & 14336.900 \\
+us.amazon.nova-premier-v1:0 & keyword_top_10 & 0.178 & 3.944 & 10.000 & 6031.356 \\
+us.amazon.nova-premier-v1:0 & keyword_top_5 & 0.100 & 4.511 & 5.000 & 3670.689 \\
+us.amazon.nova-premier-v1:0 & state_aware & 0.033 & 4.467 & 24.544 & 14265.222 \\
+us.anthropic.claude-haiku-4-5-20251001-v1:0 & all_tools & 0.322 & 2.733 & 125.000 & 57448.922 \\
+us.anthropic.claude-haiku-4-5-20251001-v1:0 & cmtf & 1.000 & 0.067 & 1.000 & 895.533 \\
+us.anthropic.claude-haiku-4-5-20251001-v1:0 & full_causal_path & 0.200 & 3.422 & 28.366 & 15275.044 \\
+us.anthropic.claude-haiku-4-5-20251001-v1:0 & keyword_top_10 & 0.200 & 2.778 & 10.000 & 5836.911 \\
+us.anthropic.claude-haiku-4-5-20251001-v1:0 & keyword_top_5 & 0.267 & 1.667 & 5.000 & 3193.189 \\
+us.anthropic.claude-haiku-4-5-20251001-v1:0 & state_aware & 0.200 & 3.467 & 27.994 & 15079.167 \\
+us.anthropic.claude-opus-4-8 & all_tools & 0.856 & 0.289 & 125.000 & 55187.100 \\
+us.anthropic.claude-opus-4-8 & cmtf & 1.000 & 0.000 & 1.000 & 1107.367 \\
+us.anthropic.claude-opus-4-8 & full_causal_path & 0.956 & 0.144 & 26.199 & 11477.800 \\
+us.anthropic.claude-opus-4-8 & keyword_top_10 & 0.467 & 0.778 & 10.000 & 5331.244 \\
+us.anthropic.claude-opus-4-8 & keyword_top_5 & 0.467 & 0.778 & 5.000 & 2932.533 \\
+us.anthropic.claude-opus-4-8 & state_aware & 0.978 & 0.133 & 26.413 & 11403.167 \\
+us.anthropic.claude-sonnet-4-6 & all_tools & 0.400 & 2.800 & 125.000 & 49092.822 \\
+us.anthropic.claude-sonnet-4-6 & cmtf & 0.622 & 1.167 & 1.000 & 1103.167 \\
+us.anthropic.claude-sonnet-4-6 & full_causal_path & 0.200 & 3.822 & 24.296 & 12858.156 \\
+us.anthropic.claude-sonnet-4-6 & keyword_top_10 & 0.200 & 3.278 & 10.000 & 5710.067 \\
+us.anthropic.claude-sonnet-4-6 & keyword_top_5 & 0.200 & 4.244 & 5.000 & 3475.500 \\
+us.anthropic.claude-sonnet-4-6 & state_aware & 0.200 & 3.778 & 24.331 & 12870.478 \\
+\bottomrule
+\end{tabular}

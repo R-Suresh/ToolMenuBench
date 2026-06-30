@@ -17,13 +17,4 @@ python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 ```
 
-## Environment variables
-
-```bash
-export AWS_REGION=us-east-1
-export AWS_DEFAULT_REGION=us-east-1
-```
-
-AWS credentials should be configured outside the repository.
-
-Do not commit AWS credentials, `.env` files, PEM files, raw traces, request IDs, local cloud logs, or unsanitized model outputs.
+AWS credentials should be configured outside the repository. Do not commit AWS credentials, `.env` files, PEM files, raw traces, request IDs, local cloud logs, or unsanitized model outputs.
