@@ -1,0 +1,44 @@
+{
+  "paper": "ToolMenuBench: Benchmarking Tool-Menu Filtering Strategies for Reliable and Efficient LLM Agents",
+  "arxiv_id": "2606.15508",
+  "benchmark": {
+    "num_tasks": 102,
+    "num_tools": 100,
+    "menu_sizes": [50, 100, 250],
+    "distractor_conditions": [
+      "mixed",
+      "schema_compatible",
+      "risky",
+      "cross_domain",
+      "semantic",
+      "near_duplicate",
+      "premature"
+    ]
+  },
+  "methods": [
+    "all_tools",
+    "state_aware",
+    "top_goal_cmtf",
+    "semantic_goal_cmtf",
+    "gold_goal_cmtf",
+    "gist_cmtf"
+  ],
+  "metrics": [
+    "task_success",
+    "wrong_tool_calls",
+    "premature_actions",
+    "visible_tool_count",
+    "risky_tool_exposure",
+    "token_usage"
+  ],
+  "expected_public_outputs": [
+    "results/toolmenubench_task_metrics.csv",
+    "results/summary_by_method.csv",
+    "results/summary_by_menu_method.csv",
+    "results/summary_by_distractor_method.csv",
+    "results/summary_by_model_method.csv"
+  ],
+  "raw_traces_publicly_released": false,
+  "public_artifact_policy": "Release curated CSV summaries, task-level metrics, figures, and tables. Do not release raw JSONL traces unless inspected and sanitized.",
+  "notes": "Public repository should contain curated reproducibility artifacts only. Raw model outputs, request metadata, cloud logs, and credentials are intentionally excluded."
+}
