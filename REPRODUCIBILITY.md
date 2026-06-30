@@ -2,20 +2,24 @@
 
 This document describes the public reproducibility package for **ToolMenuBench: Benchmarking Tool-Menu Filtering Strategies for Reliable and Efficient LLM Agents**.
 
-The goal of this repository is to provide clean, arXiv-compatible code and curated artifacts for reproducing the ToolMenuBench experiments. It is not intended to be a dump of raw internal run traces or cloud execution logs.
+The goal of this repository is to provide clean, arXiv-compatible code and curated artifacts for reproducing the validated public ToolMenuBench artifact release. It is not intended to be a dump of raw internal run traces or cloud execution logs.
+
+## Public artifact scope
+
+This public package contains the validated 30-task distractor benchmark artifacts:
+
+- 7 distractor conditions
+- 7 model backends
+- 6 filtering methods
+- 3 menu sizes
+- 30 benchmark tasks
+- 26,460 total task-level rows
+
+The uploaded artifacts support the validated 30-task distractor benchmark. They do not contain a separate 102-task artifact package.
 
 ## Benchmark scope
 
 ToolMenuBench evaluates how tool-menu construction affects multi-step LLM-agent behavior.
-
-The benchmark varies:
-
-- tool-menu size
-- distractor type
-- state-dependent task structure
-- risk exposure
-- filtering method
-- model backend
 
 The benchmark reports:
 
@@ -30,64 +34,71 @@ The benchmark reports:
 
 ## Repository layout
 
-Current core layout:
-
 ```text
 .
 ├── README.md
+├── README_PUBLIC_PACKAGE.md
 ├── REPRODUCIBILITY.md
+├── SANITIZATION_REPORT.md
+├── MANIFEST.csv
 ├── CITATION.cff
 ├── LICENSE
 ├── requirements.txt
 ├── .gitignore
+├── code/
+│   ├── toolmenubench_runner.py
+│   ├── analyze_toolmenubench.py
+│   ├── plot_toolmenubench_results.py
+│   └── README_RUN.md
+├── scripts/
+│   ├── run_smoke.sh
+│   ├── run_full_first_pass.sh
+│   └── run_one_distractor_mix.sh
+├── results/
+│   ├── toolmenubench_task_metrics_all_distractors.csv
+│   ├── summary_by_method.csv
+│   ├── summary_by_distractor_method.csv
+│   ├── summary_by_menu_method.csv
+│   ├── summary_by_model_method.csv
+│   ├── summary_by_model_distractor_method.csv
+│   ├── summary_by_model_menu_method.csv
+│   └── task_metrics_by_distractor/
+│       ├── toolmenubench_task_metrics_mixed.csv
+│       ├── toolmenubench_task_metrics_schema_compatible.csv
+│       ├── toolmenubench_task_metrics_risky.csv
+│       ├── toolmenubench_task_metrics_cross_domain.csv
+│       ├── toolmenubench_task_metrics_semantic.csv
+│       ├── toolmenubench_task_metrics_near_duplicate.csv
+│       └── toolmenubench_task_metrics_premature.csv
+├── figures/
+│   ├── success_by_method.png
+│   ├── tokens_by_method.png
+│   ├── success_vs_menu_size.png
+│   └── tokens_vs_menu_size.png
+├── tables/
+│   ├── main_results_table.tex
+│   ├── menu_scaling_table.tex
+│   └── model_method_table.tex
 └── reproducibility/
     ├── run_config_main.json
+    ├── run_config_public_results.json
     └── environment.md
 ```
 
-Target public artifact layout:
+## What is included
 
-```text
-code/
-  toolmenubench_runner.py
-  analyze_results.py
-  plot_results.py
+The public release includes:
 
-data/
-  tasks_102.json
-  tool_registry_100.json
-
-results/
-  toolmenubench_task_metrics.csv
-  summary_by_method.csv
-  summary_by_menu_method.csv
-  summary_by_distractor_method.csv
-  summary_by_model_method.csv
-
-tables/
-  summary_by_method.tex
-
-figures/
-  success_by_method.png
-  wrong_tool_calls_by_method.png
-  premature_actions_by_method.png
-  risky_tool_exposure_by_method.png
-  token_usage_by_method.png
-```
-
-## What should be included
-
-The public release should include:
-
-- benchmark runner or experiment script
+- benchmark runner code
 - analysis script
 - plotting script
-- sanitized benchmark task definitions
-- sanitized tool registry
 - curated task-level metrics CSVs
+- per-distractor task-level metrics CSVs
 - aggregate summary CSVs
 - paper-style figures
-- LaTeX tables, if available
+- LaTeX tables
+- package manifest
+- sanitization report
 - reproducibility notes
 - environment documentation
 - citation metadata
@@ -104,9 +115,10 @@ Excluded artifacts include:
 - Bedrock request IDs
 - raw Bedrock/API response metadata
 - raw model completions
-- raw JSONL traces unless carefully inspected and sanitized
+- raw JSONL traces
 - local EC2 shell history
 - personal notes
+- backup files
 - review-submission metadata
 - any double-blind review information
 
@@ -130,50 +142,43 @@ export AWS_REGION=us-east-1
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
-## Public artifact policy
+## Public result artifacts
 
-For public release, prefer curated and derived files such as:
-
-```text
-results/*.csv
-tables/*.tex
-figures/*.png
-reproducibility/run_config_main.json
-reproducibility/environment.md
-```
-
-Do not upload by default:
+The main public task-level file is:
 
 ```text
-raw_traces.jsonl
-toolmenubench_raw_traces.jsonl
-results_*/
-*.log
-.aws/
-.env
-*.pem
-*.key
+results/toolmenubench_task_metrics_all_distractors.csv
 ```
 
-## Sanitizing run artifacts
+Per-distractor task-level metrics are stored under:
 
-Before uploading any artifact generated on EC2 or through Bedrock, inspect it for:
+```text
+results/task_metrics_by_distractor/
+```
 
-- Request IDs
-- Account IDs
-- ARNs
-- access keys
-- session tokens
-- local file paths
-- hostnames
-- IP addresses
-- raw prompts
-- raw model completions
-- provider response metadata
-- timestamps that reveal internal execution details
-- review or submission metadata
+Aggregate summaries are provided as:
 
-For the public reproducibility package, prefer task metrics, summary CSVs, figures, and tables over raw JSONL traces.
+```text
+results/summary_by_method.csv
+results/summary_by_distractor_method.csv
+results/summary_by_menu_method.csv
+results/summary_by_model_method.csv
+results/summary_by_model_distractor_method.csv
+results/summary_by_model_menu_method.csv
+```
+
+The public task-metrics CSVs intentionally remove the original `final_state` column because some failure rows contained raw provider metadata or raw model text. Raw JSONL traces are excluded.
+
+## Sanitization
+
+See:
+
+```text
+SANITIZATION_REPORT.md
+MANIFEST.csv
+```
+
+The package manifest records file sizes and SHA-256 hashes for the public artifact package.
 
 ## Suggested validation checklist before release
 
@@ -189,6 +194,8 @@ raw_traces
 *_raw_traces.jsonl
 .aws
 .log
+.bak
+._*
 ```
 
 Search tracked files for common secrets or metadata patterns before release.
@@ -212,7 +219,7 @@ Recommended release description:
 ```text
 This release contains the public reproducibility package for the arXiv version of ToolMenuBench: Benchmarking Tool-Menu Filtering Strategies for Reliable and Efficient LLM Agents.
 
-It includes reproducibility notes, environment documentation, citation metadata, and curated artifacts if available.
+It includes runner code, analysis scripts, curated task-level metrics, aggregate summaries, figures, tables, reproducibility notes, environment documentation, citation metadata, a manifest, and a sanitization report.
 
 Raw traces, raw model outputs, cloud logs, and credentials are intentionally excluded.
 ```
