@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software or reproducibility package, please cite the associated arXiv paper."
+title: "ToolMenuBench: Benchmarking Tool-Menu Filtering Strategies for Reliable and Efficient LLM Agents"
+authors:
+  - family-names: "Suresh Babu"
+    given-names: "Rahul"
+  - family-names: "Iyer"
+    given-names: "Laxmipriya Ganesh"
+year: 2026
+version: "v1.0-arxiv"
+license: "MIT"
+repository-code: "https://github.com/R-Suresh/ToolMenuBench"
+url: "https://arxiv.org/abs/2606.15508"
+abstract: "ToolMenuBench is a benchmark for evaluating tool-menu construction strategies in multi-step LLM agents, measuring reliability, efficiency, and safety-relevant risk exposure."
+keywords:
+  - "LLM agents"
+  - "tool use"
+  - "tool filtering"
+  - "tool-menu construction"
+  - "agent reliability"
+  - "agent evaluation"
+  - "ToolMenuBench"
+preferred-citation:
+  type: article
+  title: "ToolMenuBench: Benchmarking Tool-Menu Filtering Strategies for Reliable and Efficient LLM Agents"
+  authors:
+    - family-names: "Suresh Babu"
+      given-names: "Rahul"
+    - family-names: "Iyer"
+      given-names: "Laxmipriya Ganesh"
+  year: 2026
+  url: "https://arxiv.org/abs/2606.15508"
