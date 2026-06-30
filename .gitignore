@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Raw/generated outputs
+results_*/
+archived_runs/
+*.log
+*.jsonl
+
+# Keep curated CSVs allowed
+# Do not globally ignore *.csv because public result summaries are CSV artifacts.
+
+# Allow curated public artifacts
+!data/
+!data/*.json
+
+!results/
+!results/*.csv
+
+!tables/
+!tables/*.csv
+!tables/*.tex
+
+!figures/
+!figures/*.png
+!figures/*.pdf
+
+!reproducibility/
+!reproducibility/*.json
+!reproducibility/*.md
+
+# Archives
+*.zip
+*.tar.gz
+
+# Secrets / keys / local cloud config
+*.pem
+*.key
+.env
+.env.*
+.aws/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
